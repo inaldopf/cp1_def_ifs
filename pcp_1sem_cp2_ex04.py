@@ -4,7 +4,7 @@ def calcular_horas_extras(salario_base, horas):
     return valor_final
 
 
-def calcular_bonus(cargo, recebeu_bonus: str):
+def calcular_bonus(cargo, recebeu_bonus):
     if recebeu_bonus.lower() == 's':
         match cargo:
             case 1:
@@ -20,23 +20,25 @@ def calcular_bonus(cargo, recebeu_bonus: str):
 
 
 def calcular_descontos_faltas(salario_base, faltas):
-    desonto = salario_base * 0.02
-    desconto_final = desonto * faltas
+    desconto = salario_base * 0.02
+    desconto_final = desconto * faltas
     return desconto_final
 
 
-nome = str(input('Nome:\n'))
-cargo = int(input('Cargo:\n'))
-salario = float(input('Salario:\n'))
-extra = float(input('Horas extras trabalhadas(1h e 30min = 1.5):\n'))
+nome = str(input('Digite seu nome:\n'))
+cargo = int(input('Digite seu cargo (1 a 4):\n'))
+salario = float(input('Digite seu salário:\n'))
+extra = float(input('Horas extras trabalhadas (1h e 30min = 1.5):\n'))
 falta = int(input('Quantidade de faltas:\n'))
 bonus = str(input('Recebeu Bonus?\n'))
+
 
 total_bonus = calcular_horas_extras(salario, extra) + calcular_bonus(cargo, bonus)
 total_descontos = calcular_descontos_faltas(salario, falta)
 salario_final = (salario - total_descontos) + total_bonus
 
-print(f'Salario Bruto: {salario}')
-print(f'Total de acréscimos: {total_bonus}')
-print(f'Total de descontos: {total_descontos}')
-print(f'Salario final: {salario_final}')
+
+print(f'Salario Bruto: R$ {salario:.2f}')
+print(f'Total de acréscimos: R$ {total_bonus:.2f}')
+print(f'Total de descontos: R$ {total_descontos:.2f}')
+print(f'Salario final: R$ {salario_final:.2f}')
